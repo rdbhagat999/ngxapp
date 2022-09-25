@@ -28,7 +28,6 @@ export class SignupComponent extends BaseComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.pattern(PAT_NAME)]],
       email: ['', [Validators.required, Validators.email]],
-      age: ['', [Validators.required]],
       card: ['', [Validators.required]],
       address: this.fb.group({
         street: ['', Validators.required],
@@ -49,10 +48,6 @@ export class SignupComponent extends BaseComponent implements OnInit {
 
   get card() {
     return this.form.get('card');
-  }
-
-  get age() {
-    return this.form.get('age');
   }
 
   // Only Integer Numbers
