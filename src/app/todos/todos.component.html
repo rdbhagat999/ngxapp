@@ -1,0 +1,34 @@
+<section class="py-1 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Lastest Todos</h1>
+    </div>
+  </div>
+
+  <div class="album p-4 bg-light">
+    <div class="container" *ngIf="todoList">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col" *ngIf="todoList.length == 0; else elseBlk">
+          <h3>No todos were found.</h3>
+        </div>
+        <ng-template #elseBlk>
+          <!-- <div class="col" *ngFor="let todo of todoList; trackBy: trackByFn">
+            <app-todo [todo]="todo"></app-todo>
+          </div> -->
+
+          <ag-virtual-scroll
+            #vs
+            [items]="todoList"
+            height="360px"
+            [min-row-height]="105"
+            class=""
+          >
+            <div class="col" *ngFor="let todo of vs.items">
+              <app-todo [todo]="todo"></app-todo>
+            </div>
+          </ag-virtual-scroll>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</section>
