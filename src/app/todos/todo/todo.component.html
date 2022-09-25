@@ -1,16 +1,6 @@
 <div class="card shadow-sm">
   <div class="card-body">
-    <p class="card-text text-start">{{ todo?.title }}</p>
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="btn-group">
-        <button type="button" class="btn btn-sm btn-outline-secondary">
-          View
-        </button>
-        <button type="button" class="btn btn-sm btn-outline-secondary">
-          Edit
-        </button>
-      </div>
-      <small class="text-muted">9 mins</small>
-    </div>
+    <p class="card-title text-start">{{ todo?.title }}</p>
+    <p class="card-text text-start">Completed: {{ todo?.completed }}</p>
   </div>
 </div>

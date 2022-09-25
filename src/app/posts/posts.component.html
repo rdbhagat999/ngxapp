@@ -1,20 +1,32 @@
 <section class="py-1 text-center container">
-  <div class="row py-lg-5">
+  <div class="row py-lg-2">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="fw-light">Lastest Posts</h1>
     </div>
   </div>
 
-  <div class="album py-5 bg-light">
-    <div class="container" *ngIf="postList$ | async as items">
+  <div class="album py-2 bg-light">
+    <div class="container" *ngIf="postList$ | async as posts">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col" *ngIf="items.length == 0; else elseBlk">
-          <h3>No items were found.</h3>
+        <div class="col" *ngIf="posts.length == 0; else elseBlk">
+          <h3>No posts were found.</h3>
         </div>
         <ng-template #elseBlk>
-          <div class="col" *ngFor="let item of items; trackBy: trackByFn">
+          <!-- <div class="col" *ngFor="let item of posts; trackBy: trackByFn">
             <app-post [post]="item"></app-post>
-          </div>
+          </div> -->
+
+          <ag-virtual-scroll
+            #vs
+            [items]="posts"
+            height="450px"
+            [min-row-height]="190"
+            class=""
+          >
+            <div class="col" *ngFor="let item of vs.items">
+              <app-post [post]="item"></app-post>
+            </div>
+          </ag-virtual-scroll>
         </ng-template>
       </div>
     </div>
